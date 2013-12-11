@@ -1,6 +1,6 @@
 var express = require('express'),
 	fs = require('fs'),
-	api = require('./facebook'),
+	//fbapi = require('./facebook'),
 	port = process.env.PORT || 5000;
 
 var app = express();
@@ -26,7 +26,7 @@ app.get('/', function(request, response) {
 
 app.get('/allphotos', function(request, response) {
 
-	api.getAllPhotos();
+	//fbapi.getAllPhotos();
 
 
 
