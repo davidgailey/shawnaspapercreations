@@ -26,8 +26,8 @@ app.get('/', function(request, response) {
 
 app.get('/allphotos', function(request, response) {
 
-	fbapi.getAllPhotos();
-
+	fbapi.getAllPhotos(response);
+	//response.send('allphotos');
 
 
 	/*

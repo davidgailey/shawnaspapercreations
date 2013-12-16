@@ -1,6 +1,6 @@
 var request = require('request');
 
-function getAllPhotos(access_token, message, response) {
+function getAllPhotos(response) {
     // Specify the URL and query string parameters needed for the request
     var url = 'https://graph.facebook.com/599182390116897/photos';
     var params = {
