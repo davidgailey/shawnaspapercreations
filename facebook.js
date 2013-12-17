@@ -2,13 +2,16 @@ var request = require('request');
 
 function getAllPhotos(response) {
     // Specify the URL and query string parameters needed for the request
-    var url = 'https://graph.facebook.com/599182390116897/photos';
+    //var url = 'https://graph.facebook.com/599182390116897/photos'; //for one particular album?
+    //https://developers.facebook.com/tools/explorer?method=GET&path=599168126784990%2Falbums%3Ffields%3Did%2Cname%2Cphotos.fields(id%2Cimages%2Clikes)
+    var url = 'https://graph.facebook.com/599168126784990/albums'; //for spc
+    // id for shawnaspapercreations is 599168126784990
     var params = {
         //access_token: access_token,
-        //message: message
+        fields: 'id,name,photos.fields(id,images,likes)'
     };
 
-	// Send the request
+	// Send the request for albums
     request.get({url: url, qs: params}, function(err, resp, body) {
       
       // Handle any errors that occur
@@ -18,11 +21,30 @@ function getAllPhotos(response) {
 
       // Generate output
       var output = '<p>Here is the response body:</p>';
-      output += '<pre>' + JSON.stringify(body, null, '\t') + '</pre>';
+      output += '<pre>' + JSON.stringify(body.data[0].photos.data[0].images[0].source, null, '\t') + '</pre>';
+      output += '<br> <img src=' + JSON.stringify(body.data[0].photos.data[0].images[0].source, null, '\t') + ' />';
+
+      var imgSourceArray = [];
+
+      body.data.forEach(function (v) {
+        if(v.photos && v.photos.data){
+          //console.log(v.photos);
+          v.photos.data.forEach(function(vv){
+            if(vv.images && vv.images[0]){
+              console.log(vv.images[0]);
+              imgSourceArray.push(vv.images[0].source);
+            }
+          });
+        }
+      });
+
+      console.log(imgSourceArray);
+
+      return imgSourceArray;
       
       // Send output as the response
-      response.writeHeader(200, {'Content-Type': 'text/html'});
-      response.end(output);
+      //response.writeHeader(200, {'Content-Type': 'text/html'});
+      //response.end(output);
     });
 
 }
