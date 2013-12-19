@@ -114,8 +114,9 @@ app.set('view engine', 'handlebars');
 
 // routes
 app.get('/', function (req, res) {
-	var data = {test:"this is test data"};
-    res.render('home',data);
+	fbapi.getAllPhotos(res);
+	//var context = {"photos": "photos test"};
+    //res.render('home',context);
 });
 
 app.listen(port, function() {

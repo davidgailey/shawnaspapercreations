@@ -1,2 +1,11 @@
-<h1>This is home.handlebars</h1>
-<h2>{{test}}</h2>
+<p>This is home.handlebars</p>
+
+
+{{#each photos}}
+
+	<p>photos {{@index}}</p>
+	<img src="{{source}}" />
+
+{{else}}
+	<p>else</p>
+{{/each}}

@@ -24,27 +24,33 @@ function getAllPhotos(response) {
       output += '<pre>' + JSON.stringify(body.data[0].photos.data[0].images[0].source, null, '\t') + '</pre>';
       output += '<br> <img src=' + JSON.stringify(body.data[0].photos.data[0].images[0].source, null, '\t') + ' />';
 
-      var imgSourceArray = [];
-
+      var imgArray = [], name = '';
+      //name = body.data[0].from.name ? body.data[0].from.name : '';
       body.data.forEach(function (v) {
+        
         if(v.photos && v.photos.data){
           //console.log(v.photos);
           v.photos.data.forEach(function(vv){
             if(vv.images && vv.images[0]){
-              console.log(vv.images[0]);
-              imgSourceArray.push(vv.images[0].source);
+              //console.log(vv.images[0]);
+              imgArray.push({"source": vv.images[0].source, "height": vv.images[0].height, "width": vv.images[0].width});
             }
           });
         }
       });
 
-      console.log(imgSourceArray);
+      var cleanedJSON = {"name": name, "description": "", "photos": imgArray}
+      console.log(cleanedJSON);
+      //return cleanedJSON;
 
-      return imgSourceArray;
+      // send cleanedJSON to render
+      response.render('home',cleanedJSON);
       
       // Send output as the response
       //response.writeHeader(200, {'Content-Type': 'text/html'});
       //response.end(output);
+
+
     });
 
 }
