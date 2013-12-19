@@ -1,3 +1,5 @@
+/*
+
 // load modules
 var express = require('express'),
 	handlebars = require('express3-handlebars'),
@@ -34,12 +36,12 @@ app.get('/', function(request, response) {
 	var data = {title:"testing"};
   	response.render("index.handlebars", data);  //Use Extension here
 
-	/*
-		var indexContents = fs.readFile('index.html', function (err, data) {
-			if (err) throw err;
-			response.send(data.toString());
-		});
-	*/
+
+		//var indexContents = fs.readFile('index.html', function (err, data) {
+			//if (err) throw err;
+			//response.send(data.toString());
+		//});
+
 });
 
 app.get('/allphotos', function(request, response) {
@@ -47,12 +49,11 @@ app.get('/allphotos', function(request, response) {
 	var imgSourceArray = fbapi.getAllPhotos(response);
 	//response.send('allphotos');
 
-	/*
-		var indexContents = fs.readFile('index.html', function (err, data) {
-			if (err) throw err;
-			response.send(data.toString());
-		});
-	*/
+		//var indexContents = fs.readFile('index.html', function (err, data) {
+			//if (err) throw err;
+			//response.send(data.toString());
+		//});
+
 });
 
 
@@ -60,6 +61,7 @@ app.listen(port, function() {
 	console.log("Listening on " + port);
 });
 
+*/
 
 
 /* http://pastebin.com/GpSsbqXv
@@ -91,3 +93,32 @@ console.log("NodeJS Server Started");
 
 
 */
+
+
+
+
+
+/* https://npmjs.org/package/express3-handlebars*/
+
+// load modules
+var express = require('express'),
+    exphbs  = require('express3-handlebars'),
+    fbapi = require('./facebook'),
+    app = express(),
+
+   	port = process.env.PORT || 5000;
+
+// configuration
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
+// routes
+app.get('/', function (req, res) {
+	var data = {test:"this is test data"};
+    res.render('home',data);
+});
+
+app.listen(port, function() {
+	console.log("Listening on " + port);
+});
+
