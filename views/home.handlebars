@@ -1,10 +1,26 @@
+
+
+
 <p>This is home.handlebars</p>
 
 
+
+<div class="row">
+	<div class="twelve columns">
+		<p>12 columns</p>
+	</div>
+</div>
+
+</div>
+
 {{#each photos}}
 
-	<p>photos {{@index}}</p>
-	<img src="{{source}}" />
+	<!--
+		<p>photos {{@index}}</p>
+		<img src="{{source}}" />
+	-->
+
+	<div class="photo parallax" gumby-parallax="0.7" style="background-image: url('{{source}}')"></div>
 
 {{else}}
 	<p>else</p>
