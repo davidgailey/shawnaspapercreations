@@ -1,27 +1,55 @@
 
-
-
-<p>This is home.handlebars</p>
+<br>
 
 
 
 <div class="row">
-	<div class="twelve columns">
-		<p>12 columns</p>
-	</div>
+
+	<h3 class="centered nine columns quote-box">
+		<i class="icon-quote"></i>
+		<span class="faux-stitch">
+			Beautiful cards for any occasion. Shawna truly pours her <i class="icon-heart"></i> and soul into ever card she makes. Stunning graphics that can be personalized to fit any birthday, anniversary, holiday etc...
+		</span>
+		
+	</h3>
 </div>
 
-</div>
+<br><br>
 
-{{#each photos}}
 
-	<!--
-		<p>photos {{@index}}</p>
-		<img src="{{source}}" />
-	-->
+<ul class="three_up tiles">
+	{{#each photos}}
 
-	<div class="photo parallax" gumby-parallax="0.7" style="background-image: url('{{source}}')"></div>
+		<!--
+			<p>photos {{@index}}</p>
+		-->
 
-{{else}}
-	<p>else</p>
-{{/each}}
+		{{!-- <li class="photo parallax" gumby-parallax="0.8" style="background-image: url('{{source}}')"></li> --}}
+
+		<li class="photo switch" style="background-image: url('{{source}}')" gumby-trigger="#modal{{@index}}">
+			<div class="modal" id="modal{{@index}}">
+				<div class="content">
+					<a class="close switch" gumby-trigger="#modal{{@index}}"><i class="icon-cancel" /></i></a>
+					<div class="row">
+						<div class="twelve columns centered text-center">
+							<img src="{{source}}">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			{{!-- <a href="#" class="switch" gumby-trigger="#modal{{@index}}">Open Modal</a> --}}
+
+
+		</li>
+
+	{{else}}
+		<p>else</p>
+	{{/each}}
+</ul>
+
+<br><br>
+
+
+
+

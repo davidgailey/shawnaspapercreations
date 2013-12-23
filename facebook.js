@@ -31,9 +31,9 @@ function getAllPhotos(response) {
         if(v.photos && v.photos.data){
           //console.log(v.photos);
           v.photos.data.forEach(function(vv){
-            if(vv.images && vv.images[0]){
-              //console.log(vv.images[0]);
-              imgArray.push({"source": vv.images[0].source, "height": vv.images[0].height, "width": vv.images[0].width});
+            if(vv.images && vv.images[2]){
+              //console.log(vv.images[2]);
+              imgArray.push({"source": vv.images[2].source, "height": vv.images[2].height, "width": vv.images[2].width});
             }
           });
         }
