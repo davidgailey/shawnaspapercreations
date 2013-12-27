@@ -41,12 +41,21 @@ header {
 
 .photo {
 	box-shadow: rgba(200,218,255,0.5) .1em .1em 2em inset; 
+	opacity: 0;
 	min-height: 12rem;
 	margin-bottom: 1rem;
 	/*background-size: cover;*/
 	background-position: 50% 50%;
 	border-radius: 1em;
-	cursor: pointer;
+	/*cursor: pointer;*/
+	-webkit-transition: all 500ms ease-out 1s;
+    -moz-transition: all 500ms ease-out 1s;
+    -o-transition: all 500ms ease-out 1s;
+    transition: all 500ms ease-out 1s;
+}
+
+.photo.active{
+	opacity: 100;
 }
 
 .photo:nth-child(4n+4) {

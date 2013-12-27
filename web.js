@@ -26,6 +26,7 @@ app.get('/', function (req, res) {
 app.use(express.static('static/'));
 app.use(express.static('static/bower_components/gumby/'));
 app.use(express.static('static/bower_components/gumby-parallax/'));
+app.use(express.static('static/bower_components/gumby-inview/'));
 
 
 app.listen(port, function() {

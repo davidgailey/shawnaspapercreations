@@ -13,6 +13,13 @@ Gumby.ready(function() {
 		$(this).trigger('gumby.trigger');
 	});
 
+	//load images via listening on gumby.inview
+	$('.inview[gumby-inview-load-bg]').on('gumby.inview', function() {
+		$this = $(this);
+		$this.css('backgroundImage',$this.attr('gumby-inview-load-bg'));
+
+	});
+
 // Oldie document loaded
 }).oldie(function() {
 	Gumby.warn("This is an oldie browser...");

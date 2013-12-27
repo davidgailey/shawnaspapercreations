@@ -1695,7 +1695,9 @@ header { text-align: center; }
 
 .faux-stitch { border: 3px dashed #fff; border-radius: 1em; display: block; padding: 0.5em; }
 
-.photo { box-shadow: rgba(200, 218, 255, 0.5) 0.1em 0.1em 2em inset; min-height: 12rem; margin-bottom: 1rem; /*background-size: cover;*/ background-position: 50% 50%; border-radius: 1em; cursor: pointer; }
+.photo { box-shadow: rgba(200, 218, 255, 0.5) 0.1em 0.1em 2em inset; opacity: 0; min-height: 12rem; margin-bottom: 1rem; /*background-size: cover;*/ background-position: 50% 50%; border-radius: 1em; /*cursor: pointer;*/ -webkit-transition: all 500ms ease-out 1s; -moz-transition: all 500ms ease-out 1s; -o-transition: all 500ms ease-out 1s; transition: all 500ms ease-out 1s; }
+
+.photo.active { opacity: 100; }
 
 .photo:nth-child(4n+4) { width: 100% !important; min-height: 18rem; background-size: cover; background-position: 50% 40%; -webkit-filter: sepia(50%); -moz-filter: sepia(50%); filter: sepia(50%); }
 
